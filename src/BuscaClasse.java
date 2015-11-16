@@ -5,7 +5,6 @@ public class BuscaClasse {
 	
 	int size;
 	int[][] espaco;
-	int method; 
 	int weight;
 	
 	int startX;
