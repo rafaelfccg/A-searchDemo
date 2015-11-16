@@ -5,7 +5,7 @@ public class ManhattanDistance extends Heuristica{
 	}
 	
 	public double distance(int x, int y){
-		return Math.abs(x-destinyX) + Math.abs(y + destinyY);	
+		return Math.abs(x-destinyX) + Math.abs(y - destinyY);	
 	}
 
 }
