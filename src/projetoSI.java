@@ -32,7 +32,7 @@ public class projetoSI extends Frame {
 	public int tamanho = 15;
 	
 	private int[][] espacos = new int[tamanho][tamanho];
-	private Button[][] b = new Button[tamanho][tamanho];
+	public Button[][] b = new Button[tamanho][tamanho];
 	
 	private static projetoSI f0;
 
@@ -58,8 +58,6 @@ public class projetoSI extends Frame {
 		Panel p = new Panel();
 		Panel quadrados = new Panel();
 		quadrados.setLayout(new GridLayout(tamanho, tamanho));
-		
-		
 		
 		for (int i = 0; i < tamanho; i++) {
 			for (int j = 0; j < tamanho; j++) {
@@ -197,9 +195,43 @@ public class projetoSI extends Frame {
 			}
 		});
 		
+//		private final static int qNada = 0; //branco
+//		private final static int qInicio = 1; //amarelo
+//		private final static int qFim = 2; //vermelho
+//		private final static int qBarreira = 3; //preto
+//		private final static int qFronteira = 4; //azul
+//		private final static int qExpandido = 5; //ciano
+//		private final static int qCaminho = 6; //verde
 		executar.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-				//chamar função A*
+				int[][] espaco = new int[tamanho][tamanho];
+				Node start = new Node();
+				Node destiny = new Node();
+				for (int i = 0; i < tamanho; i++) {
+					for (int j = 0; j < tamanho; j++) {
+						if(b[i][j].getBackground() == Color.black){
+							espaco[i][j] = 3;
+						}else if(b[i][j].getBackground() == Color.yellow){
+							espaco[i][j] = 1;
+							start.x = i;
+							start.y = j;
+							start.cost = 0;
+						}else if(b[i][j].getBackground() == Color.red){
+							espaco[i][j] = 2;
+							destiny.x = i;
+							destiny.y = j;
+							destiny.cost = 0;
+						}
+					}
+				}
+				BuscaClasse bc = new BuscaClasse(espaco);
+				bc.paintDelegate = f0;
+				bc.start = start;
+				bc.destiny = destiny;
+				bc.h = new EuclidianDistance(destiny.x, destiny.y);
+				bc.aEstrela(1);
+				
+				
 			}
 		});
 		
