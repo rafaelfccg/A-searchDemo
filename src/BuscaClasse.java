@@ -30,7 +30,7 @@ public class BuscaClasse {
 		paintDelegate.b[p.x][p.y].setBackground(Color.green); ;
 	}
 	void paintExplorado(Node p){
-		paintDelegate.b[p.x][p.y].setBackground(Color.orange); ;
+		paintDelegate.b[p.x][p.y].setBackground(Color.darkGray); ;
 	}
 	void paintFronteira(Node p){
 		paintDelegate.b[p.x][p.y].setBackground(Color.blue); ;
@@ -40,7 +40,7 @@ public class BuscaClasse {
 		
 		Comparator<Node> comp = new NodeComparator();
 		PriorityQueue<Node> fronteira = new PriorityQueue<Node>(11, comp);
-		start.cost = h.distance(start.x, start.y);
+		start.cost = weight*h.distance(start.x, start.y);
 		fronteira.add(start);
 		int size = espaco.length;
 		Node finished = new Node();
@@ -69,11 +69,12 @@ public class BuscaClasse {
 				}
 			}
 		}
-		finished = finished.parent;
+		//finished = finished.parent;
 		while(finished.x != start.x || finished.y != start.y){
 			paintCaminho(finished);
 			finished = finished.parent;			
 		}
+		paintCaminho(finished);
 		
 	}
 
