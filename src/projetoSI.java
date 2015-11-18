@@ -229,7 +229,7 @@ public class projetoSI extends Frame {
 				bc.start = start;
 				bc.destiny = destiny;
 				bc.h = new EuclidianDistance(destiny.x, destiny.y);
-				bc.aEstrela(1);
+				bc.aEstrela(w);
 				
 				
 			}

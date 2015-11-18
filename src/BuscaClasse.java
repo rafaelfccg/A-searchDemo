@@ -36,7 +36,7 @@ public class BuscaClasse {
 		paintDelegate.b[p.x][p.y].setBackground(Color.blue); ;
 	}
 	
-	public void aEstrela(int weight){
+	public void aEstrela(double weight){
 		
 		Comparator<Node> comp = new NodeComparator();
 		PriorityQueue<Node> fronteira = new PriorityQueue<Node>(11, comp);
