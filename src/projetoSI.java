@@ -205,31 +205,37 @@ public class projetoSI extends Frame {
 		executar.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 				int[][] espaco = new int[tamanho][tamanho];
-				Node start = new Node();
-				Node destiny = new Node();
+				Node start = null;
+				Node destiny = null;
 				for (int i = 0; i < tamanho; i++) {
 					for (int j = 0; j < tamanho; j++) {
 						if(b[i][j].getBackground() == Color.black){
 							espaco[i][j] = 3;
 						}else if(b[i][j].getBackground() == Color.yellow){
 							espaco[i][j] = 1;
+							start = new Node();
 							start.x = i;
 							start.y = j;
 							start.cost = 0;
 						}else if(b[i][j].getBackground() == Color.red){
 							espaco[i][j] = 2;
+							destiny = new Node();
 							destiny.x = i;
 							destiny.y = j;
 							destiny.cost = 0;
 						}
 					}
 				}
-				BuscaClasse bc = new BuscaClasse(espaco);
-				bc.paintDelegate = f0;
-				bc.start = start;
-				bc.destiny = destiny;
-				bc.h = new EuclidianDistance(destiny.x, destiny.y);
-				bc.aEstrela(w);
+	
+				if(start !=null && destiny != null){
+					BuscaClasse bc = new BuscaClasse(espaco);
+					bc.paintDelegate = f0;
+					bc.start = start;
+					bc.destiny = destiny;
+					bc.h = new EuclidianDistance(destiny.x, destiny.y);
+					bc.aEstrela(w);
+				}
+				
 				
 				
 			}
