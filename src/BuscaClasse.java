@@ -63,7 +63,8 @@ public class BuscaClasse {
 					int ny = top.y +dy[i];
 					if( nx< size && nx >= 0 &&
 						ny < size && ny >= 0 &&
-						espaco[nx][ny] != 3 ){
+						espaco[nx][ny] != 3 &&
+						!mark[nx][ny]){
 						Node newNode = new Node();
 						newNode.x = nx;
 						newNode.y = ny;
