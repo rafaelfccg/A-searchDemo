@@ -170,7 +170,7 @@ public class projetoSI extends Frame {
 			public void actionPerformed (ActionEvent e) {
 				for (int i = 0; i < tamanho; i++) {
 					for (int j = 0; j < tamanho; j++) {
-						b[i][j].setBackground(Color.white);
+						if(b[i][j].getBackground() != Color.black)b[i][j].setBackground(Color.white);
 					}
 				}
 				botaoIndex = qNada;
